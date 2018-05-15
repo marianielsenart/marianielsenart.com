@@ -1,4 +1,27 @@
 /**
+ * Mixins
+ */
+@mixin random-color-block {
+    position: relative;
+    font-weight: bold;
+    color: unquote("rgba(#{random(155) + 100}, #{random(155) + 100}, #{random(155) + 100}, #{random(5) + 4})");
+
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+
+        background-color: unquote("rgba(#{random(155) + 100}, #{random(155) + 100}, #{random(155) + 100}, #{(random(5) + 5) / 10})");
+        transform: translate(#{(random(2) - 1) / 10}em, #{(random(4) - 2) / 10}em) rotate(#{random(8) - 4}deg);
+    }
+}
+
+/**
  * Body
  */
 body {
@@ -23,29 +46,19 @@ h1 {
         font-weight: bold;
         padding: 0 0.25rem;
         margin: 0 0.15em;
-        perspective: 2em;
-
-        &:after {
-            content: '';
-            position: absolute;
-            z-index: -1;
-            display: block;
-            width: calc(100% + 1em);
-            height: 2em;
-            top: calc(50% - 1em);
-            left: -0.5em;
-            background-color: white;
-        }
 
         @for $i from 1 through 10 {
-            &:nth-child(#{$i}):after {
-                transform: translate(#{random(20) - 10}px, #{random(40) - 20}px) rotate(#{random(8) - 4}deg);
-                background-color: unquote("rgba(#{random(155) + 100}, #{random(155) + 100}, #{random(155) + 100}, #{random(5) + 4})");
-            }
-
             &:nth-child(#{$i}) {
+                @include random-color-block;
+                
                 z-index: -$i;
-                color: unquote("rgba(#{random(155) + 100}, #{random(155) + 100}, #{random(155) + 100}, #{random(5) + 4})");
+                
+                &:after {
+                    width: calc(100% + 1em);
+                    height: 2em;
+                    top: calc(50% - 1em);
+                    left: -0.5em;
+                }
             }
         }
     }
@@ -55,7 +68,7 @@ h1 {
  * Site header
  */
 .site-header {
-    top: 0;
+    top: 2em;
     left: 0;
     width: 100%;
 
@@ -65,11 +78,9 @@ h1 {
 }
 
 .site-title {
+    @include random-color-block;
     @include relative-font-size(1.625);
-    font-weight: 300;
-    line-height: $base-line-height * $base-font-size * 2.25;
-    letter-spacing: -1px;
-    margin-bottom: 0;
+    
     float: left;
 
     &,
@@ -91,13 +102,7 @@ h1 {
     }
 
     .page-link {
-        color: $text-color;
-        line-height: $base-line-height;
-
-        // Gaps between nav items, but not on the last one
-        &:not(:last-child) {
-            margin-right: 20px;
-        }
+        @include random-color-block;
     }
 
     @include media-query($on-palm) {
@@ -154,8 +159,6 @@ h1 {
     }
 }
 
-
-
 /**
  * Site footer
  */
@@ -164,23 +167,7 @@ h1 {
     padding: $spacing-unit 0;
 
     .wrapper {
-        color: unquote("rgba(#{random(155) + 100}, #{random(155) + 100}, #{random(155) + 100}, #{random(5) + 4})");
-        position: relative;
-        font-weight: bold;
-
-        &:after {
-            content: '';
-            display: block;
-            position: absolute;
-            z-index: -1;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-
-            background-color: unquote("rgba(#{random(155) + 100}, #{random(155) + 100}, #{random(155) + 100}, #{random(5) + 4})");
-            transform: translate(#{random(20) - 10}px, #{random(40) - 20}px) rotate(#{random(8) - 4}deg);
-        }
+        @include random-color-block;
     }
 }
 
