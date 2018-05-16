@@ -30,6 +30,61 @@ body {
 }
 
 /**
+ * Gallery
+ */
+.gallery {
+    &-items {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &-item {
+        flex-basis: calc(25% - 2rem);
+        overflow: hidden;
+        position: relative;
+        height: 8rem;
+        display: block;
+        margin: 1rem;
+        transition: transform 0.5s ease;
+
+        @for $i from 1 through 100 {
+            &:nth-child(#{$i}) {
+                transform: rotate(#{random(8) - 4}deg);
+
+                p {
+                    @include random-color-block;
+                }
+            }
+        }
+
+        &:hover {
+            transform: scale(1.2) !important;
+        }
+
+        p {
+            z-index: 10;
+            position: absolute;
+            text-align: center;
+            display: inline-block;
+            max-width: 90%;
+            width: auto;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        img {
+            position: absolute;
+            min-height: 100%;
+            min-width: 100%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+/**
  * Page title
  */
 h1 {
@@ -102,7 +157,11 @@ h1 {
     }
 
     .page-link {
-        @include random-color-block;
+        @for $i from 1 through 10 {
+            &:nth-child(#{$i}) {
+                @include random-color-block;
+            }
+        }
     }
 
     @include media-query($on-palm) {

@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<div class="gallery">
+
+    {{ content }}
+
+    <div class="gallery-items">
+        {% for gallery_page in site.pages %}
+            {% if gallery_page.url contains '/gallery/' and gallery_page.url != '/gallery/' %}
+                {% assign filename = gallery_page.url | replace: '/gallery/', '' | replace: '/', '' %}
+
+                <a class="gallery-item" href="{{ gallery_page.url }}">
+                    <p>{{ gallery_page.title }}</p>
+                    <img src="/gallery/{{ filename }}.jpg">
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

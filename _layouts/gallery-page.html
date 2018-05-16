@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<article class="gallery-page">
+    <a href="/gallery/">Back to gallery</a>
+
+    <div class="gallery-page-content e-content">
+        <div class="gallery-page-description">
+            {{ page.description }}
+        </div>
+        <div class="gallery-page-image">
+            {% assign filename = page.url | replace: '/gallery/', '' | replace: '/', '' %}
+            <img src="/gallery/{{ filename }}.jpg">
+        </div>
+    </div>
+
+    {%- if site.disqus.shortname -%}
+    {%- include disqus_comments.html -%}
+    {%- endif -%}
+
+    <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
