@@ -35,5 +35,13 @@
 </footer>
 
 <script>
+    // Set random background image
     document.body.style.backgroundImage = 'url(\'/assets/img/background-' + Math.floor((Math.random() * 3) + 1) + '.jpg\')';
+
+    // Listen for scroll
+    window.addEventListener('scroll', function() {
+        var y = document.documentElement.scrollTop;
+
+        document.body.classList.toggle('scrolling', y > 60);
+    });
 </script>
