@@ -4,4 +4,4 @@ title: Gallery
 permalink: /gallery/
 ---
 
-This is my gallery
+A collection of my paintings
