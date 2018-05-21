@@ -2,8 +2,6 @@
 layout: default
 ---
 <article class="gallery-page">
-    <a href="/gallery/">Back to gallery</a>
-
     <div class="gallery-page-content e-content">
         <div class="gallery-page-description">
             {{ page.description }}
@@ -18,5 +16,53 @@ layout: default
     {%- include disqus_comments.html -%}
     {%- endif -%}
 
+    <div class="gallery-items">
+        {% assign prev_url = "" %}
+        {% assign link_prev_url = "" %}
+        {% assign link_next_url = "" %}
+
+        {% for gallery_page in site.pages %}
+            {% if gallery_page.url contains '/gallery/' and gallery_page.url != '/gallery/' %}
+                {% assign filename = gallery_page.url | replace: '/gallery/', '' | replace: '/', '' %}
+
+                <a class="gallery-item {% if gallery_page.url == page.url %}active{% endif %}" href="{{ gallery_page.url }}">
+                    <img src="/gallery/{{ filename }}.jpg">
+                </a>
+
+                {% if gallery_page.url == page.url %}
+                    {% assign link_prev_url = prev_url %}
+                {% endif %}
+
+                {% if prev_url == page.url %}
+                    {% assign link_next_url = gallery_page.url %}
+                {% endif %}
+
+                {% assign prev_url = gallery_page.url %}
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="tools wrapper">
+        {% if link_prev_url != "" %}
+            <a class="prev" href="{{ link_prev_url }}">Prev</a>
+        {% endif %}
+
+        {% if link_next_url != "" %}
+            <a class="next" href="{{ link_next_url }}">Next</a>
+        {% endif %}
+    </div>
+
     <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
+
+<script src="/assets/js/masonry.pkgd.min.js"></script>
+<script src="/assets/js/gallery.js"></script>
+<script>
+    var img = document.querySelector('.gallery-page-image');
+
+    window.addEventListener('scroll', function() {
+        var bounds = img.getBoundingClientRect();
+
+        document.body.classList.toggle('scrolled-past', bounds.bottom < window.innerHeight / 2);
+    });
+</script>

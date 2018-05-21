@@ -34,52 +34,91 @@ body {
  */
 .gallery {
     &-items {
-        display: flex;
-        flex-wrap: wrap;
+        margin: 1rem -0.5rem;
     }
 
     &-item {
-        flex-basis: calc(25% - 2rem);
-        overflow: hidden;
-        position: relative;
-        height: 8rem;
+        box-sizing: border-box;
         display: block;
-        margin: 1rem;
-        transition: transform 0.5s ease;
-
-        @for $i from 1 through 100 {
-            &:nth-child(#{$i}) {
-                transform: rotate(#{random(8) - 4}deg);
-
-                p {
-                    @include random-color-block;
-                }
-            }
-        }
+        transition: transform 0.5s ease, opacity 0.5s ease;
+        width: 25%;
+        min-height: 6rem;
+        padding: 0.5rem;
 
         &:hover {
-            transform: scale(1.2) !important;
+            transform: scale(1.1) !important;
         }
 
-        p {
-            z-index: 10;
-            position: absolute;
+        &.active img {
+                
+        }
+    }
+}
+
+/**
+ * Gallery page
+ */
+.gallery-page {
+    .page-content {
+        padding-top: 14rem;
+    }
+
+    h1 {
+        height: auto;
+        line-height: 1;
+        position: absolute;
+        top: 5rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .gallery-item:not(.active):not(:hover) {
+        opacity: 0.5;
+    }
+
+    .tools {
+        transition: opacity 0.5s ease;
+        position: fixed;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        left: 50%;
+
+        a {
+            position: absolute !important;
+            top: 0;
+            display: block;
+            width: 3rem;
             text-align: center;
-            display: inline-block;
-            max-width: 90%;
-            width: auto;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-        }
+            transition: transform 0.33s ease;
+        
+            &:after {
+                width: 150% !important;
+                height: 150% !important;
+                top: -25% !important;
+                left: -25% !important;
+            }
 
-        img {
-            position: absolute;
-            min-height: 100%;
-            min-width: 100%;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+            &:hover {
+                transform: scale(1.1);
+            }
+
+            &.prev {
+                @include random-color-block;
+                left: 0;
+            }
+            
+            &.next {
+                @include random-color-block;
+                right: 0;
+            }
+        }
+    }
+
+    &.scrolled-past {
+        .tools {
+            opacity: 0;
+            pointer-events: none;
         }
     }
 }
@@ -123,7 +162,7 @@ h1 {
  * Site header
  */
 .site-header {
-    top: 2em;
+    top: 0;
     left: 0;
     width: 100%;
 
