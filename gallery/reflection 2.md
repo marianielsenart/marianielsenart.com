@@ -1,5 +1,5 @@
 ---
 layout: gallery-page
-title: a different perspective
+title: reflection 2
 description: A damn fine painting
 ---

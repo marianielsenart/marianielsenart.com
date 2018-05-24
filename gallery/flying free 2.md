@@ -1,5 +1,5 @@
 ---
 layout: gallery-page
-title: a different perspective
+title: flying free 2
 description: A damn fine painting
 ---

@@ -1,5 +1,5 @@
 ---
 layout: gallery-page
-title: a different perspective
+title: the party
 description: A damn fine painting
 ---

@@ -1,5 +1,5 @@
 ---
 layout: gallery-page
-title: a different perspective
+title: bird in a tree
 description: A damn fine painting
 ---

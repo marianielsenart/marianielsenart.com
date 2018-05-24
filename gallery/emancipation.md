@@ -1,5 +1,5 @@
 ---
 layout: gallery-page
-title: a different perspective
+title: emancipation
 description: A damn fine painting
 ---

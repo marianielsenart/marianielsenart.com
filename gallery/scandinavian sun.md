@@ -1,5 +1,5 @@
 ---
 layout: gallery-page
-title: a different perspective
+title: scandinavian sun
 description: A damn fine painting
 ---

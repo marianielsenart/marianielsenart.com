@@ -1,5 +1,5 @@
 ---
 layout: gallery-page
-title:  "Ablaze"
-description: "A damn good-looking painting"
+title: ablaze
+description: A damn fine painting
 ---

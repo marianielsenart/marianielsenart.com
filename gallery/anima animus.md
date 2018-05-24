@@ -1,5 +1,5 @@
 ---
 layout: gallery-page
-title: a different perspective
+title: anima animus
 description: A damn fine painting
 ---

@@ -1,5 +1,5 @@
 ---
 layout: gallery-page
-title: a different perspective
+title: clown
 description: A damn fine painting
 ---

@@ -1,5 +1,5 @@
 ---
 layout: gallery-page
-title: a different perspective
+title: an octopus and his woman
 description: A damn fine painting
 ---

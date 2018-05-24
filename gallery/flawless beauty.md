@@ -1,5 +1,5 @@
 ---
 layout: gallery-page
-title: a different perspective
+title: flawless beauty
 description: A damn fine painting
 ---

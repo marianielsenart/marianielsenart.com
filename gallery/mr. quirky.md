@@ -1,5 +1,5 @@
 ---
 layout: gallery-page
-title: a different perspective
+title: mr. quirky
 description: A damn fine painting
 ---

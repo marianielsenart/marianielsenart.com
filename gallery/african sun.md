@@ -1,5 +1,5 @@
 ---
 layout: gallery-page
-title:  "A different perspective"
-description: "A damn good-looking painting"
+title: african sun
+description: A damn fine painting
 ---
