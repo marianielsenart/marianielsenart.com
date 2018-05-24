@@ -30,6 +30,21 @@ body {
 }
 
 /**
+ * Links
+ */
+a {
+    transition: transform 0.33s ease;
+    display: inline-block;
+    text-decoration: none;
+    
+    &:hover {
+        transform: scale(1.1) !important;
+        text-decoration: none;
+    }
+
+}
+
+/**
  * Gallery
  */
 .gallery {
@@ -51,10 +66,6 @@ body {
         min-height: 2rem;
         padding: 0.5rem;
 
-        &:hover {
-            transform: scale(1.1) !important;
-        }
-
         &.active img {
                 
         }
@@ -67,7 +78,7 @@ body {
 .gallery-page {
     h1 {
         margin: 0 auto;
-        padding: 1em 0;
+        padding: 2em 0 1em 0;
         position: relative;
 
         &:before {
@@ -106,17 +117,12 @@ body {
             display: block;
             width: 3rem;
             text-align: center;
-            transition: transform 0.33s ease;
         
             &:after {
                 width: 150% !important;
                 height: 150% !important;
                 top: -25% !important;
                 left: -25% !important;
-            }
-
-            &:hover {
-                transform: scale(1.1);
             }
 
             &.prev {
@@ -179,6 +185,9 @@ h1 {
     top: 0;
     left: 0;
     width: 100%;
+    padding: 1rem 0;
+    line-height: $base-line-height * $base-font-size * 2.25;
+    transition: background-color 0.5s ease;
 
     // Positioning context for the mobile navigation icon
     position: fixed;
@@ -214,6 +223,8 @@ h1 {
     }
 
     .page-link {
+        @include relative-font-size(1.625);
+
         @for $i from 1 through 10 {
             &:nth-child(#{$i}) {
                 @include random-color-block;
